@@ -21,7 +21,7 @@
         </li>
       </ul>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-warning">Sign Up</button>
+        <button type="button" class="btn btn-warning" (click)="open(content2)">Sign Up</button>
         <button type="button" class="btn btn-danger" (click)="open(content)">Login</button>
       </div>
     </div>
@@ -53,5 +53,47 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Login</button>
+  </div>
+</ng-template>
+
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Sign Up</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+             <span class="input-group-text" id="basic-addon1">id</span>
+           </div>
+           <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+          <div class="input-group-prepend">
+             <span class="input-group-text" id="basic-addon1"><b>**</b></span>
+           </div>
+           <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+          <div class="input-group-prepend">
+             <span class="input-group-text" id="basic-addon1"><b>**</b></span>
+           </div>
+           <input type="text" class="form-control" placeholder="Confirm Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+          <div class="input-group-prepend">
+             <span class="input-group-text" id="basic-addon1"><b>@</b></span>
+           </div>
+           <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Sign Up</button>
   </div>
 </ng-template>
