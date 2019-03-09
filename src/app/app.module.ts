@@ -9,6 +9,8 @@ import { ViewportComponent } from './viewport/viewport.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TrendingComponent } from './trending/trending.component';
 import { GamesComponent } from './games/games.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { GamesComponent } from './games/games.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     NgbModule.forRoot()
   ],
   providers: [],

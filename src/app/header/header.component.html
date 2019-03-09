@@ -23,71 +23,76 @@
 </nav>
 
 <ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Login</h4>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1">@</span>
-           </div>
-           <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  <form [formGroup]='loginForm'>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Login</h4>
+    </div>
+    <div class="modal-body">
+  
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1">@</span>
+             </div>
+             <input type="text" formControlName="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1"><b>**</b></span>
+             </div>
+             <input type="text" formControlName="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+          </div>
         </div>
-        <br>
-        <div class="input-group">
-          <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1"><b>**</b></span>
-           </div>
-           <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Login</button>
-  </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-warning" (click)='login()'>Login</button>
+    </div>
+  </form>
+
 </ng-template>
 
 <ng-template #content2 let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Sign Up</h4>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1">id</span>
-           </div>
-           <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  <form [formGroup]='registerForm'>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Sign Up</h4>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1">id</span>
+             </div>
+             <input formControlName="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1"><b>**</b></span>
+             </div>
+             <input formControlName="password" type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1"><b>**</b></span>
+             </div>
+             <input formControlName="cpassword" type="text" class="form-control" placeholder="Confirm Password" aria-label="Password" aria-describedby="basic-addon1">
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1"><b>@</b></span>
+             </div>
+             <input type="email" formControlName="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+          </div>
         </div>
-        <br>
-        <div class="input-group">
-          <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1"><b>**</b></span>
-           </div>
-           <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-        </div>
-        <br>
-        <div class="input-group">
-          <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1"><b>**</b></span>
-           </div>
-           <input type="text" class="form-control" placeholder="Confirm Password" aria-label="Password" aria-describedby="basic-addon1">
-        </div>
-        <br>
-        <div class="input-group">
-          <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1"><b>@</b></span>
-           </div>
-           <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Sign Up</button>
-  </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-warning" (click)="register()">Sign Up</button>
+    </div>
+  </form>
 </ng-template>
