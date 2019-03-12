@@ -95,4 +95,12 @@ export class HeaderComponent implements OnInit {
     this.token = ''
   }
 
+  getinfo(){
+    var response = this.auth.getinfo(this.token);
+    console.log(this.token)
+    response.subscribe(res => {
+      console.log(res)
+    })
+  }
+
 }

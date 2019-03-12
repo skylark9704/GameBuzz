@@ -18,6 +18,7 @@
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-warning" *ngIf="token === ''" (click)="open(content2)">Sign Up</button>
       <button type="button" class="btn btn-danger"  *ngIf="token === ''" (click)="open(content)">Login</button>
+      <button type="button" class="btn btn-info"  *ngIf="token !== ''" (click)="getinfo()">Get Info</button>
       <button type="button" class="btn btn-danger"  *ngIf="token !== ''" (click)="logout()">Logout</button>
     </div>
   </div>

@@ -12,6 +12,7 @@ import { GamesComponent } from './games/games.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { bcrypt } from 'bcrypt';
 
 @NgModule({
   declarations: [
