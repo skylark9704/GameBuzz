@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient , HttpHeaders } from '@angular/common/http'
+import { HttpClient , HttpHeaders } from '@angular/common/http'
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +11,15 @@ export class AuthService {
   constructor( private http : HttpClient) {
   }
 
-  login(email,password){
-    const body = {
-      email : email,
-      password: password
-    }
-    return this.http.post(this.url+'login',body);
+  message(message){
+    return this.http.post(this.url+'api/welcome',message)
   }
 
-  create(email,password,cpassword,username){
-    console.log('From service : '+email+" "+password+" "+username);
-    const body = {
-      email : email,
-      password: password,
-      cpassword : cpassword,
-      username : username
-    }
-    return this.http.post(this.url+'create/user',body);
+  login(credentials){
+    return this.http.post(this.url+'api/login',credentials)
   }
 
-  log(){
-    return this.http.get(this.url+'log');
+  register(credentials){
+    return this.http.post(this.url+'api/register',credentials)
   }
 }

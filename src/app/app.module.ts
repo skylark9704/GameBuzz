@@ -11,6 +11,7 @@ import { TrendingComponent } from './trending/trending.component';
 import { GamesComponent } from './games/games.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
