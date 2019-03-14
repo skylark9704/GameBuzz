@@ -4,51 +4,23 @@
   <hr>
   <div class="container">
   <div class="row">
-    <div class="col">
+    <ng-container *ngFor="let item of matchesObj">
+    <div class="col-3">
       <div class="card">
-        <img src="/assets/images/pubg-card.jpg" class="card-img-top" alt="...">
+        <img src="/assets/images/{{item[1].game}}.jpg" class="card-img-top" alt="...">
+        <div class="infocard">
+          <a>Entry: {{item[1].entryfee}} </a>|<a> Win: {{item[1].prizepool}}</a>
+          </div>
         <div class="card-body">
-          <h6 class="card-title">PUBG Mobile</h6>
-          <p class="card-text">10th Mar | 9:00PM</p>
-          <a href="#" class="btn btn-warning">Register!</a>
-        </div>
-      </div>
-      <hr>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="/assets/images/pubg-card.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h6 class="card-title">PUBG Mobile</h6>
-          <p class="card-text">10th Mar | 8:00PM</p>
-          <a href="#" class="btn btn-warning">Register!</a>
-        </div>
-      </div>
-      <hr>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="/assets/images/pubg-card.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h6 class="card-title">PUBG Mobile</h6>
-          <p class="card-text">10th Mar | 7:00PM</p>
-          <a href="#" class="btn btn-warning">Register!</a>
-        </div>
-      </div>
-      <hr>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="/assets/images/pubg-card.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h6 class="card-title">PUBG Mobile</h6>
-          <p class="card-text">10th Mar | 6:00PM</p>
-          <a href="#" class="btn btn-warning">Register!</a>
-        </div>
-      </div>
-      <hr>
-    </div>
+          <h6 class="card-title">{{item[1].gamename}}</h6>
+          <p class="card-text">{{item[1].date}} | {{item[1].time}}</p>
+          <a class="btn btn-warning">Register!</a>
 
+        </div>
+      </div>
+      <hr>
+    </div>
+    </ng-container>
   </div>
 </div>
 </div>

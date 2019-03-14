@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatchService } from '../matches.service';
 
 @Component({
   selector: 'app-trending',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trending.component.css']
 })
 export class TrendingComponent implements OnInit {
-
-  constructor() { }
+  matchesObj=[];
+  constructor( private matches : MatchService) {
+    var response = this.matches.getAllMatches();
+    response.subscribe( result => {
+      for(var i in result){
+        console.log(result[i])
+        this.matchesObj.push([i, result [i]]);
+      }
+      console.log(this.matchesObj)
+    })
+  }
 
   ngOnInit() {
   }

@@ -6,3 +6,12 @@ h3{
 .card-img-top{
   height:300px;
 }
+
+.infocard{
+  text-align: center;
+  background-color: #FFC107;
+}
+
+.infocard a{
+  font-weight: bold;
+}

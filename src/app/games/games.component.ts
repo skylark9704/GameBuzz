@@ -14,6 +14,7 @@ export class GamesComponent implements OnInit {
       for(var i in result){
         this.gamesObj.push([i, result [i]]);
       }
+      console.log(this.gamesObj)
     })
   }
 
