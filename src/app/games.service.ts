@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 
-export class AuthService {
+export class GamesService {
   url : string = 'http://192.168.0.9:6900/';
   constructor( private http : HttpClient, private cookie : CookieService) {
   }
@@ -21,32 +21,22 @@ export class AuthService {
     return this.http.post(this.url+'api/welcome',message, { headers })
   }
 
-  login(credentials: any){
+  getAllGames(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+    return this.http.get(this.url+'api/games', { headers })
+  }
+
+  getGame(id: any){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
     })
 
-    return this.http.post(this.url+'api/login',credentials)
-  }
-
-  register(credentials: any){
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
-    })
-
-    return this.http.post(this.url+'api/register',credentials)
-  }
-
-  getinfo(token:String){
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+token
-    })
-    return this.http.get(this.url+'api/profile', { headers: headers })
-
+    return this.http.get(this.url+'api/game',id)
   }
 }

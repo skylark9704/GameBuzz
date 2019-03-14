@@ -2,7 +2,7 @@
   <button class="navbar-toggler navbar-toggler-right bg-warning" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand text-warning " href="#"><b>GameBuzz</b></a>
+  <a class="navbar-brand text-warning " routerLink="/home"><b>GameBuzz</b></a>
   <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -12,13 +12,13 @@
         <a class="nav-link text-warning" href="#">Matches</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-warning" href="#">Leaderboards</a>
+        <a class="nav-link text-warning" routerLink="/leaderboard">Leaderboards</a>
       </li>
     </ul>
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-warning" *ngIf="token === ''" (click)="open(content2)">Sign Up</button>
       <button type="button" class="btn btn-danger"  *ngIf="token === ''" (click)="open(content)">Login</button>
-      <button type="button" class="btn btn-info"  *ngIf="token !== ''" (click)="getinfo()">Get Info</button>
+      <button type="button" class="btn btn-info"  *ngIf="token !== ''" routerLink="/profile">Profile</button>
       <button type="button" class="btn btn-danger"  *ngIf="token !== ''" (click)="logout()">Logout</button>
     </div>
   </div>

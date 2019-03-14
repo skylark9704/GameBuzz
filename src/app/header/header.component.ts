@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../auth.service';
 import { FormControl,FormGroup } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -25,10 +26,15 @@ export class HeaderComponent implements OnInit {
     username: new FormControl(''),
   })
 
-  token;
+  token : any;
 
   modal: any;
-  constructor(private modalService: NgbModal, private auth : AuthService, private cookie : CookieService) {
+  constructor(
+    private modalService: NgbModal,
+    private auth : AuthService,
+    private cookie : CookieService,
+    private router : Router,
+  ) {
     console.log(this.token)
     this.token = this.cookie.get('token');
     console.log(this.token)
@@ -37,19 +43,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  open(content) {
+  open(content: any) {
     this.modal = this.modalService.open(content)
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
 
   ngOnInit() {
   }
@@ -93,6 +90,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.cookie.delete('token')
     this.token = ''
+    this.router.navigate(['/home'])
   }
 
   getinfo(){
