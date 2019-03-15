@@ -1,12 +1,12 @@
 <br>
 <div class="container">
-  <h3>Matches <span class="badge badge-warning">Trending</span></h3>
+  <h3>Upcoming Matches <span class="badge badge-warning">Register Now!</span></h3>
   <hr>
   <div class="container">
   <div class="row">
     <ng-container *ngFor="let item of matchesObj">
     <div class="col-3">
-      <div class="card">
+      <div class="card" style="box-shadow: 0 0 8px 0 black">
         <img src="/assets/images/{{item[1].game}}.jpg" class="card-img-top" alt="...">
         <div class="infocard">
           <a>Entry: {{item[1].entryfee}} </a>|<a> Win: {{item[1].prizepool}}</a>
@@ -14,8 +14,7 @@
         <div class="card-body">
           <h6 class="card-title">{{item[1].gamename}}</h6>
           <p class="card-text">{{item[1].date}} | {{item[1].time}}</p>
-          <a class="btn btn-warning">Register!</a>
-
+          <button class="btn btn-warning" routerLink="/match/{{item[0]}}">Register!</button>
         </div>
       </div>
       <hr>

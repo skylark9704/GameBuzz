@@ -1,29 +1,3 @@
-<nav class="navbar navbar-expand-md navbar-light bg-dark">
-  <button class="navbar-toggler navbar-toggler-right bg-warning" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand text-warning " routerLink="/home"><b>GameBuzz</b></a>
-  <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link text-warning " routerLink="/games">Games <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-warning" routerLink="/matches">Matches</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-warning" routerLink="/leaderboard">Leaderboards</a>
-      </li>
-    </ul>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-warning" *ngIf="token === ''" (click)="open(content2)">Sign Up</button>
-      <button type="button" class="btn btn-danger"  *ngIf="token === ''" (click)="open(content)">Login</button>
-      <button type="button" class="btn btn-info"  *ngIf="token !== ''" routerLink="/profile">Profile</button>
-      <button type="button" class="btn btn-danger"  *ngIf="token !== ''" (click)="logout()">Logout</button>
-    </div>
-  </div>
-</nav>
-
 <ng-template #content let-modal>
   <form [formGroup]='loginForm'>
     <div class="modal-header">
@@ -49,10 +23,10 @@
 
     </div>
     <div class="modal-footer">
-      <a class="text-danger mr-auto">{{errorMessageLogin}}</a>
       <button type="button" class="btn btn-outline-warning" (click)="login()">Login</button>
     </div>
   </form>
+
 </ng-template>
 
 <ng-template #content2 let-modal>
@@ -101,9 +75,8 @@
 
     </div>
     <div class="modal-footer">
-      <a class="text-danger mr-auto">{{errorMessageSignIn}}</a>
       <button type="button" class="btn btn-outline-warning" (click)="register()">Sign Up</button>
-      <button type="button" class="btn btn-outline-warning" (click)="tester()">Test</button>
+        <button type="button" class="btn btn-outline-warning" (click)="tester()">Test</button>
     </div>
   </form>
 </ng-template>

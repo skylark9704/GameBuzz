@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit {
   token : any;
 
   modal: any;
+  errorMessageLogin: any;
+  errorMessageSignIn: any;
   constructor(
     private modalService: NgbModal,
     private auth : AuthService,
@@ -38,9 +40,6 @@ export class HeaderComponent implements OnInit {
     console.log(this.token)
     this.token = this.cookie.get('token');
     console.log(this.token)
-
-
-
   }
 
   open(content: any) {
@@ -52,7 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   tester(){
-    var response = this.auth.message({message:'Gamebuzz'});
+    var response = this.auth.message({message:'I\'m Workng'});
     response.subscribe(res =>{
       console.log(res)
     })
@@ -72,6 +71,7 @@ export class HeaderComponent implements OnInit {
 
       else{
         console.log(res["error"].message)
+        this.errorMessageLogin = res['error'].message
       }
     })
 
@@ -83,8 +83,16 @@ export class HeaderComponent implements OnInit {
     var response = this.auth.register(credentials); //sends cURL HTTP request
     response.subscribe(res => {
       console.log(res)
+      if(res['error'].message){
+        this.errorMessageSignIn = res['error'].message
+      }
+
+      else if(res['message']){
+        this.errorMessageSignIn = res['message']
+        this.modal.close();
+      }
     })
-    this.modal.close();
+
   }
 
   logout(){
@@ -98,7 +106,10 @@ export class HeaderComponent implements OnInit {
     console.log(this.token)
     response.subscribe(res => {
       console.log(res)
+
     })
+
+
   }
 
 }

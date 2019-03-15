@@ -37,6 +37,8 @@ export class MatchService {
       'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
     })
 
-    return this.http.get(this.url+'api/match',id)
+    const body = { id : id}
+
+    return this.http.post(this.url+'api/match',{id})
   }
 }

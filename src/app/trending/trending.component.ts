@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from '../matches.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trending',

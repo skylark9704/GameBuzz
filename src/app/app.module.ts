@@ -17,12 +17,18 @@ import { HomeComponent } from './home/home.component';
 import { ActivityComponent } from './activity/activity.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
+import { ModalComponent } from './modal/modal.component';
+import { MatchComponent } from './match/match.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
   { path: 'home', component: HomeComponent, data: {  } },
+  { path: 'games', component: GamesComponent, data: {  } },
+  { path: 'matches', component: TrendingComponent, data: {  } },
   { path: 'leaderboard', component: LeaderboardsComponent, data: {  }},
+  { path: 'match', redirectTo:'home', pathMatch:'full'},
+  { path: 'match/:id', component: MatchComponent, data: {  }},
   { path: 'profile', component: ProfileComponent, data: {  },
     children:[
       { path: '', outlet:'playerstats', component: ActivityComponent, pathMatch:'full'},
@@ -43,7 +49,9 @@ const appRoutes: Routes = [
     HomeComponent,
     ActivityComponent,
     AchievementsComponent,
-    LeaderboardsComponent
+    LeaderboardsComponent,
+    ModalComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,

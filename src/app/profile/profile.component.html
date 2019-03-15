@@ -8,9 +8,9 @@
     </div>
 
     <div class="col-10">
-      <h2>{{username}} <a style="font-size: 16px;">({{name}})</a></h2>
-      <hr>
-      <div class="container" style="background-color: #343A40; border-radius: 10px; padding: 16px; height: 65% ">
+      <div class="container" style="background-color: #343A40; border-radius: 10px; padding: 16px; ">
+        <h2 class="text-warning">{{username}} <a style="font-size: 16px;">({{name}})</a></h2>
+        <hr>
         <p class="text-warning">Steam : <a>https://steamcommunity.com/profiles/76561198186857074</a></p>
         <p class="text-warning">Facebook : <a>www.facebook.com/playername</a></p>
       </div>
@@ -34,7 +34,7 @@
               <a class="nav-link text-warning bold" [routerLink]="[{ outlets: { playerstats: ['achievements']}}]">Achievements</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-warning bold" href="#">Games</a>
+              <a class="nav-link text-warning bold" >Games</a>
             </li>
           </ul>
         </div>
