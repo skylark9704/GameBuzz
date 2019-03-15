@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
 import { ModalComponent } from './modal/modal.component';
 import { MatchComponent } from './match/match.component';
+
 
 
 const appRoutes: Routes = [
@@ -55,6 +57,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,

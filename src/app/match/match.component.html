@@ -15,7 +15,7 @@
             </tr>
             <tr>
               <th scope="row">Players : </th>
-              <td>{{details['match'].players}} / 100</td>
+              <td>{{player.length}} / 100</td>
             </tr>
             <tr>
               <th scope="row">Time : </th>
@@ -44,7 +44,7 @@
     <h3 class="text-warning">Players</h3>
     <div class="row">
       <div class="col">
-        <table class="table" style="color: #FFC10D">
+        <table class="table" style="color: #FFC10D; text-align:center">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -54,24 +54,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>5</td>
-              <td>9</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>2</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>0</td>
-              <td>3</td>
-            </tr>
+            <ng-container *ngFor="let item of playerdetails; let i = index">
+              <tr>
+                <th scope="row">{{serialize(i)}}</th>
+                <td>{{item['user'].username}}</td>
+                <td>5</td>
+                <td>9</td>
+              </tr>
+              </ng-container>
           </tbody>
         </table>
       </div>

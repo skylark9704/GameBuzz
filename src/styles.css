@@ -2,3 +2,13 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+.is-active{
+  color: black !important;
+  border: 1px solid #FFC10D;
+  border-radius: 5px;
+}
+
+.color{
+  color: #FFC10D;
+}

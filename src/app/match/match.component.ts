@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { CookieService } from 'ngx-cookie-service';
 import { MatchService } from '../matches.service';
 import * as uuid from 'uuid';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-match',
@@ -12,11 +13,14 @@ import * as uuid from 'uuid';
 export class MatchComponent implements OnInit {
   matchId;
   details;
+  player;
+  playerdetails = []
   constructor(
     private cookie : CookieService,
     private route : Router,
     private router : ActivatedRoute,
-    private match : MatchService
+    private match : MatchService,
+    private user : UserService
   ) {
     if (!this.cookie.get('token')) {
         this.route.navigate(['/home'])
@@ -28,12 +32,30 @@ export class MatchComponent implements OnInit {
       response.subscribe(res => {
         console.log(res)
         this.details = res;
+        if(res['match'].players !== ""){
+          console.log(res['match'].players)
+          this.player = res['match'].players.split(',')
+          console.log(this.player)
+
+          for(var i= 0; i<this.player.length;i++){
+            var result = this.user.getUser(this.player[i]);
+            result.subscribe(res => {
+              console.log(res)
+              this.playerdetails.push(res)
+            })
+          }
+          console.log(this.playerdetails)
+        }
       })
     }
   }
 
   generateOrderId(){
     console.log(uuid.v4())
+  }
+
+  serialize(index){
+    return index+1
   }
 
   ngOnInit() {
