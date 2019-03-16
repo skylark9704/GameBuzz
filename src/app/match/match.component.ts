@@ -14,6 +14,7 @@ export class MatchComponent implements OnInit {
   matchId;
   details;
   player;
+  playerLen;
   playerdetails = []
   constructor(
     private cookie : CookieService,
@@ -44,7 +45,12 @@ export class MatchComponent implements OnInit {
               this.playerdetails.push(res)
             })
           }
+          this.playerLen = this.player.length
           console.log(this.playerdetails)
+        }
+
+        else{
+          this.playerLen = 0;
         }
       })
     }

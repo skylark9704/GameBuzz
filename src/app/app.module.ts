@@ -20,12 +20,43 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
 import { ModalComponent } from './modal/modal.component';
 import { MatchComponent } from './match/match.component';
+import { AdminComponent } from './admin/admin.component';
+import { MUsersComponent } from './m-users/m-users.component';
+import { MMatchesComponent } from './m-matches/m-matches.component';
+import { MGamesComponent } from './m-games/m-games.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddGamesComponent } from './add-games/add-games.component';
+import { FormsModule } from '@angular/forms';
+import { DeleteGamesComponent } from './delete-games/delete-games.component';
+import { AddMatchesComponent } from './add-matches/add-matches.component';
+import { DeleteMatchesComponent } from './delete-matches/delete-matches.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
   { path: 'home', component: HomeComponent, data: {  } },
+  { path: 'admin', component: AdminLoginComponent, data: {  }, },
+  { path: 'admin/manage', component: AdminComponent, data: {  },
+    children: [
+      { path: '', outlet:'admin', component: DashboardComponent },
+      { path: 'matches', component: MMatchesComponent, outlet:'admin', data: {  } },
+      { path: 'dashboard', component: DashboardComponent, outlet:'admin', data: {  } },
+      { path: 'users', component: MUsersComponent, outlet:'admin', data: {  } },
+      { path: 'games', component: MGamesComponent, outlet:'admin', data: {  },
+        children: [
+          { path: 'add', component: AddGamesComponent, outlet:'games', data: {  } },
+          { path: 'update', component: AddGamesComponent, outlet:'games', data: {  } },
+          { path: 'delete', component: DeleteGamesComponent, outlet:'games', data: {  } },
+        ]},
+      { path: 'matches', component: MMatchesComponent, outlet:'admin', data: {  },
+        children:[
+          { path: 'add', component: AddMatchesComponent, outlet:'matches', data: {  } },
+          { path: 'update', component: AddGamesComponent, outlet:'macthes', data: {  } },
+          { path: 'delete', component: DeleteMatchesComponent, outlet:'matches', data: {  } },
+        ]},
+    ]},
   { path: 'games', component: GamesComponent, data: {  } },
   { path: 'matches', component: TrendingComponent, data: {  } },
   { path: 'leaderboard', component: LeaderboardsComponent, data: {  }},
@@ -53,7 +84,17 @@ const appRoutes: Routes = [
     AchievementsComponent,
     LeaderboardsComponent,
     ModalComponent,
-    MatchComponent
+    MatchComponent,
+    AdminComponent,
+    MUsersComponent,
+    MMatchesComponent,
+    MGamesComponent,
+    DashboardComponent,
+    AddGamesComponent,
+    DeleteGamesComponent,
+    AddMatchesComponent,
+    DeleteMatchesComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +102,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,

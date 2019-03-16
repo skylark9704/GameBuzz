@@ -1,0 +1,29 @@
+<div class="container">
+  <form [formGroup]="addGames">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Title</label>
+        <input formControlName="game" type="email" class="form-control" id="inputEmail4" placeholder="Enter Game's Title">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputState">Platform</label>
+        <select formControlName="platform" class="form-control">
+          <option *ngFor="let platformType of platformTypes" [value]="platformType">{{platformType}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputState">Status</label>
+        <select formControlName="status" class="form-control">
+          <option *ngFor="let statusType of statusTypes" [value]="statusType">{{statusType}}</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-warning" (click)="addGame()">Add</button>
+    <a> &nbsp;{{errorMessage}}</a>
+  </form>
+</div>

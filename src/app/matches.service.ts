@@ -41,4 +41,24 @@ export class MatchService {
 
     return this.http.post(this.url+'api/match',{id})
   }
+
+  addMatch(value: any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+
+    return this.http.post(this.url+'api/match/create',{value})
+  }
+
+  removeMatch(id){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+
+    return this.http.post(this.url+'api/match/delete',{id})
+  }
 }

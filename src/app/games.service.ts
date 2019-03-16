@@ -39,4 +39,24 @@ export class GamesService {
 
     return this.http.get(this.url+'api/game',id)
   }
+
+  addGame(body : any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+
+    return this.http.post(this.url+'api/game/create',body)
+  }
+
+  deleteGame(id: any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+
+    return this.http.post(this.url+'api/game/delete',{id})
+  }
 }

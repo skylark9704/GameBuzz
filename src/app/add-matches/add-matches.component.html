@@ -1,0 +1,67 @@
+<div class="container">
+  <form [formGroup]="addGames">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Select Game</label>
+        <select formControlName="game" class="form-control">
+          <option *ngFor="let gameType of gameTypes" [value]="gameType">{{gameType}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="inputState">Hours</label>
+        <select formControlName="hours" class="form-control">
+          <option *ngFor="let item of hours" [value]="item">{{item}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Min</label>
+        <select formControlName="minutes" class="form-control">
+          <option *ngFor="let item of minutes" [value]="item">{{item}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-1">
+        <label for="inputState">AM/PM</label>
+        <select formControlName="day" class="form-control">
+          <option *ngFor="let item of day" [value]="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="inputState">Day</label>
+        <select formControlName="date" class="form-control">
+          <option *ngFor="let item of date" [value]="item">{{item}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Month</label>
+        <select formControlName="month" class="form-control">
+          <option *ngFor="let item of month" [value]="item">{{item}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Year</label>
+        <select formControlName="year" class="form-control">
+          <option *ngFor="let item of year" [value]="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputEmail4">Entry Fee</label>
+        <input formControlName="entry" type="text" class="form-control" id="inputEmail4" placeholder="Entry Fee (INR)">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputEmail4">Prize Pool</label>
+        <input formControlName="prize" type="text" class="form-control" id="inputEmail4" placeholder="Prize (INR)">
+      </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-warning" (click)="addMatch()">Add</button>
+    <a> &nbsp;{{errorMessage}}</a>
+  </form>
+</div>

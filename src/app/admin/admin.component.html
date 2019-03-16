@@ -1,0 +1,19 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <ul class="list-group" style="background-color: #343A40;box-shadow: 0 0 8px 0 black">
+        <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['dashboard']}}]"><b>Dashboard</b></a>
+        <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['users']}}]">Users</a>
+        <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['matches']}}]">Matches</a>
+        <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['games']}}]">Games</a>
+        <a class="list-group-item">Orders</a>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="container" style="height:100%;background-color: #343A40; color: #FFC10D; padding:16px; border-radius: 10px; box-shadow: 0 0 8px 0 black">
+        <router-outlet name='admin'></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

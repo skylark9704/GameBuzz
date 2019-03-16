@@ -1,0 +1,34 @@
+<div class="container">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Platform</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of gamesArray; let i = index">
+      <tr>
+        <th scope="row">{{serialize(i)}}</th>
+        <td>{{item}}</td>
+        <td>{{game[item].game}}</td>
+        <td>{{game[item].platform}}</td>
+        <td>{{game[item].status}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-danger" (click)=delete(item)>Remove</button>
+
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+
+
+  </tbody>
+</table>
+</div>
