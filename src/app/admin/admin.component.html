@@ -2,12 +2,13 @@
 <div class="container">
   <div class="row">
     <div class="col-2">
-      <ul class="list-group" style="background-color: #343A40;box-shadow: 0 0 8px 0 black">
+      <ul class="list-group" style="background-color: #343A40;box-shadow: 0 0 8px 0 black; border-radius:10px">
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['dashboard']}}]"><b>Dashboard</b></a>
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['users']}}]">Users</a>
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['matches']}}]">Matches</a>
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['games']}}]">Games</a>
         <a class="list-group-item">Orders</a>
+        <a class="list-group-item" (click)='logout()' style="background-color:#C82333; color: white; cursor: pointer">Logout</a>
       </ul>
     </div>
     <div class="col">

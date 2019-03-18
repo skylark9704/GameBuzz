@@ -1,0 +1,38 @@
+<div class="container">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Game</th>
+      <th scope="col">Time</th>
+      <th scope="col">Date</th>
+      <th scope="col">Entry</th>
+      <th scope="col">Prize</th>
+      <th scope="col">Registrations</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of matchesArray; let i = index">
+      <tr>
+        <th scope="row" routerLink="/match/{{item}}">{{item}}</th>
+        <td>{{matches[item].gamename}}</td>
+        <td>{{matches[item].time}}</td>
+        <td>{{matches[item].date}}</td>
+        <td>{{matches[item].entryfee}}</td>
+        <td>{{matches[item].prizepool}}</td>
+        <td>{{players[i]}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-danger" (click)=delete(item)>Remove</button>
+
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+
+
+  </tbody>
+</table>
+</div>

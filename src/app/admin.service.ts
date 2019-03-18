@@ -8,7 +8,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class AdminService {
-  url : string = 'http://192.168.0.9:6900/';
+  url : string = 'http://192.168.0.3:6900/';
+  admin;
   constructor( private http : HttpClient, private cookie : CookieService) {
   }
 
@@ -29,5 +30,13 @@ export class AdminService {
     })
 
     return this.http.post(this.url+'api/admin/login',credentials)
+  }
+
+  setAdmin(status: Boolean){
+    this.admin = status
+  }
+
+  isAdmin(){
+    return this.admin
   }
 }

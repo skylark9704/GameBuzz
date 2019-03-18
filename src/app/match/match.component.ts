@@ -4,6 +4,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { MatchService } from '../matches.service';
 import * as uuid from 'uuid';
 import { UserService } from '../user.service';
+import { PaymentService } from '../payment.service';
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-match',
@@ -21,7 +23,8 @@ export class MatchComponent implements OnInit {
     private route : Router,
     private router : ActivatedRoute,
     private match : MatchService,
-    private user : UserService
+    private user : UserService,
+    private payment : PaymentService
   ) {
     if (!this.cookie.get('token')) {
         this.route.navigate(['/home'])
@@ -56,8 +59,43 @@ export class MatchComponent implements OnInit {
     }
   }
 
+  getDecodedAccessToken(token: string): any {
+  try{
+      return jwt_decode(token);
+  }
+  catch(Error){
+      return null;
+  }
+}
+
   generateOrderId(){
-    console.log(uuid.v4())
+
+    var data = this.getDecodedAccessToken(this.cookie.get('token'))
+    console.log(data)
+    console.log(data.user.email)
+    var name = data.user.name.split(' ')
+
+
+    var paymentData = {
+      productinfo: this.matchId,
+      txnid: uuid.v4()+"|"+data.user._id,
+      amount: this.details['match'].entryfee,
+      email: data.user.email,
+      phone: data.user.phone,
+      lastname: name[1],
+      firstname:name[0],
+      surl: "http://192.168.0.3:6900/api/transaction", //"http://localhost:3000/payu/success"
+      furl: "http://192.168.0.3:6900/api/transaction", //"http://localhost:3000/payu/fail"
+    };
+
+    var response = this.payment.paymentInitiate(paymentData)
+    response.subscribe(res => {
+      console.log(res)
+      console.log(res['success'])
+      window.location.href=res['success']
+
+    })
+
   }
 
   serialize(index){

@@ -19,9 +19,9 @@ export class AdminComponent implements OnInit {
     private games : GamesService,
     private router : Router
   ) {
-
-     if(!this.cookie.get('token')){
-       //this.router.navigate(['/home']);
+      console.log('TOKEN '+this.cookie.get('TOKEN'))
+     if(!this.cookie.get('TOKEN')){
+       this.router.navigate(['/admin']);
      }
 
      else {
@@ -31,6 +31,11 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this.cookie.delete('TOKEN')
+    this.router.navigate(['/admin'])
   }
 
 }

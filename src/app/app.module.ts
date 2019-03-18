@@ -31,8 +31,8 @@ import { DeleteGamesComponent } from './delete-games/delete-games.component';
 import { AddMatchesComponent } from './add-matches/add-matches.component';
 import { DeleteMatchesComponent } from './delete-matches/delete-matches.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ViewOrdersComponent } from './view-orders/view-orders.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -41,17 +41,18 @@ const appRoutes: Routes = [
   { path: 'admin/manage', component: AdminComponent, data: {  },
     children: [
       { path: '', outlet:'admin', component: DashboardComponent },
-      { path: 'matches', component: MMatchesComponent, outlet:'admin', data: {  } },
       { path: 'dashboard', component: DashboardComponent, outlet:'admin', data: {  } },
       { path: 'users', component: MUsersComponent, outlet:'admin', data: {  } },
       { path: 'games', component: MGamesComponent, outlet:'admin', data: {  },
         children: [
+          { path: '', outlet:'games', component: AddGamesComponent },
           { path: 'add', component: AddGamesComponent, outlet:'games', data: {  } },
           { path: 'update', component: AddGamesComponent, outlet:'games', data: {  } },
           { path: 'delete', component: DeleteGamesComponent, outlet:'games', data: {  } },
         ]},
       { path: 'matches', component: MMatchesComponent, outlet:'admin', data: {  },
         children:[
+          { path: '', outlet:'matches', component: AddMatchesComponent },
           { path: 'add', component: AddMatchesComponent, outlet:'matches', data: {  } },
           { path: 'update', component: AddGamesComponent, outlet:'macthes', data: {  } },
           { path: 'delete', component: DeleteMatchesComponent, outlet:'matches', data: {  } },
@@ -94,7 +95,8 @@ const appRoutes: Routes = [
     DeleteGamesComponent,
     AddMatchesComponent,
     DeleteMatchesComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    ViewOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +105,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularFontAwesomeModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,

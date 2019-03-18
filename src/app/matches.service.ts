@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class MatchService {
-  url : string = 'http://192.168.0.9:6900/';
+  url : string = 'http://192.168.0.3:6900/';
   constructor( private http : HttpClient, private cookie : CookieService) {
   }
 

@@ -1,3 +1,35 @@
-<p>
-  admin-login works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <form [formGroup]='adminloginForm'>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title" style="color : #ffc10d">Administrator Login</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">@</span>
+                 </div>
+                 <input type="text" formControlName="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <br>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1"><b>**</b></span>
+                 </div>
+                 <input type="text" formControlName="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+              </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <a class="text-danger mr-auto">{{errorMessageLogin}}</a>
+          <button type="button" class="btn btn-warning" (click)="login()">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -3,7 +3,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../auth.service';
 import { FormControl,FormGroup } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router'
+import { Router,ActivatedRoute } from '@angular/router'
 
 
 @Component({
@@ -36,10 +36,12 @@ export class HeaderComponent implements OnInit {
     private auth : AuthService,
     private cookie : CookieService,
     private router : Router,
+    private url : ActivatedRoute
   ) {
     console.log(this.token)
     this.token = this.cookie.get('token');
     console.log(this.token)
+    console.log(this.router.url)
   }
 
   open(content: any) {
@@ -63,9 +65,11 @@ export class HeaderComponent implements OnInit {
     var response = this.auth.login(credentials); //sends cURL HTTP request
     response.subscribe(res => {
       if (res["token"]) {
+        this.cookie.delete('TOKEN')
         this.cookie.set( 'token', res["token"] );
         this.token = this.cookie.get('token')
         console.log(this.token)
+        this.router.navigate(['/home'])
         this.modal.close();
       }
 
