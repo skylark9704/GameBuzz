@@ -6,6 +6,7 @@ import * as uuid from 'uuid';
 import { UserService } from '../user.service';
 import { PaymentService } from '../payment.service';
 import * as jwt_decode from "jwt-decode";
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-match',
@@ -24,13 +25,10 @@ export class MatchComponent implements OnInit {
     private router : ActivatedRoute,
     private match : MatchService,
     private user : UserService,
-    private payment : PaymentService
+    private payment : PaymentService,
+    private db : DatabaseService
   ) {
-    if (!this.cookie.get('token')) {
-        this.route.navigate(['/home'])
-    }
 
-    else {
       this.matchId = this.router.snapshot.params['id']
       var response = this.match.getMatch(this.matchId);
       response.subscribe(res => {
@@ -56,7 +54,6 @@ export class MatchComponent implements OnInit {
           this.playerLen = 0;
         }
       })
-    }
   }
 
   getDecodedAccessToken(token: string): any {
@@ -84,8 +81,8 @@ export class MatchComponent implements OnInit {
       phone: data.user.phone,
       lastname: name[1],
       firstname:name[0],
-      surl: "http://192.168.0.3:6900/api/transaction", //"http://localhost:3000/payu/success"
-      furl: "http://192.168.0.3:6900/api/transaction", //"http://localhost:3000/payu/fail"
+      surl: this.db.getDbURL()+"api/transaction", //"http://localhost:3000/payu/success"
+      furl: this.db.getDbURL()+"api/transaction", //"http://localhost:3000/payu/fail"
     };
 
     var response = this.payment.paymentInitiate(paymentData)

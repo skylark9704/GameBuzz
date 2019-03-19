@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
+import { DatabaseService } from './database.service';
 
 
 @Injectable({
@@ -8,9 +9,10 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class AdminService {
-  url : string = 'http://192.168.0.3:6900/';
+  url : string;
   admin;
-  constructor( private http : HttpClient, private cookie : CookieService) {
+  constructor( private http : HttpClient, private cookie : CookieService , private db :DatabaseService) {
+    this.url = this.db.getDbURL()
   }
 
   message(message: { message: string; }){

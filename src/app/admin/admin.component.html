@@ -7,7 +7,7 @@
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['users']}}]">Users</a>
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['matches']}}]">Matches</a>
         <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['games']}}]">Games</a>
-        <a class="list-group-item">Orders</a>
+        <a class="list-group-item" [routerLink]="[{ outlets: { admin: ['orders']}}]">Orders</a>
         <a class="list-group-item" (click)='logout()' style="background-color:#C82333; color: white; cursor: pointer">Logout</a>
       </ul>
     </div>

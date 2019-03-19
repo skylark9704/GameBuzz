@@ -2,33 +2,29 @@
   <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Game</th>
-      <th scope="col">Time</th>
-      <th scope="col">Date</th>
-      <th scope="col">Entry</th>
-      <th scope="col">Prize</th>
-      <th scope="col">Registrations</th>
-      <th scope="col">Actions</th>
+      <th scope="col">TxnID</th>
+      <th scope="col">Status</th>
+      <th scope="col">Match</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Added On</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">User</th>
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let item of matchesArray; let i = index">
+    <ng-container *ngFor="let item of keys; let i = index">
       <tr>
-        <th scope="row" routerLink="/match/{{item}}">{{item}}</th>
-        <td>{{matches[item].gamename}}</td>
-        <td>{{matches[item].time}}</td>
-        <td>{{matches[item].date}}</td>
-        <td>{{matches[item].entryfee}}</td>
-        <td>{{matches[item].prizepool}}</td>
-        <td>{{players[i]}}</td>
-        <td>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-warning">Update</button>
-            <button type="button" class="btn btn-danger" (click)=delete(item)>Remove</button>
-
-          </div>
-        </td>
+        <th scope="row" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;">{{orderData[item].txnid}}</th>
+        <td >{{orderData[item].status}}</td>
+        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;"routerLink="/match/{{orderData[item].productinfo}}">{{orderData[item].productinfo}}</td>
+        <td>{{orderData[item].amount}}</td>
+        <td>{{orderData[item].addedon}}</td>
+        <td>{{orderData[item].fullname}}</td>
+        <td>{{orderData[item].email}}</td>
+        <td>{{orderData[item].phone}}</td>
+        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;">{{orderData[item].user}}</td>
       </tr>
     </ng-container>
 

@@ -6,18 +6,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="[{ outlets: { matches: ['add']}}]">View</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Update</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="[{ outlets: { matches: ['delete']}}]">Delete</a>
+        <a class="nav-link" [routerLink]="[{ outlets: { orders: ['view']}}]">View</a>
       </li>
     </ul>
   </div>
 </nav>
 <br>
 <div class="container">
-  <router-outlet name="matches"></router-outlet>
+  <router-outlet name="orders"></router-outlet>
 </div>

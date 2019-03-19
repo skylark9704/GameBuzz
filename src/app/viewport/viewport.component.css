@@ -1,5 +1,7 @@
 #viewport{
     background-image : url(/assets/images/back.jpg);
     background-size: cover;
-
+    height:100vh;
+    overflow: scroll !important;
+    padding-bottom: 32px;
 }

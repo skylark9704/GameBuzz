@@ -24,6 +24,7 @@ import { AdminComponent } from './admin/admin.component';
 import { MUsersComponent } from './m-users/m-users.component';
 import { MMatchesComponent } from './m-matches/m-matches.component';
 import { MGamesComponent } from './m-games/m-games.component';
+import { MOrdersComponent } from './m-orders/m-orders.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddGamesComponent } from './add-games/add-games.component';
 import { FormsModule } from '@angular/forms';
@@ -33,6 +34,7 @@ import { DeleteMatchesComponent } from './delete-matches/delete-matches.componen
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { DatabaseService } from './database.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -43,6 +45,11 @@ const appRoutes: Routes = [
       { path: '', outlet:'admin', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent, outlet:'admin', data: {  } },
       { path: 'users', component: MUsersComponent, outlet:'admin', data: {  } },
+      { path: 'orders', component: MOrdersComponent, outlet:'admin', data: {  },
+        children:[
+          { path: '', outlet:'orders', component: ViewOrdersComponent },
+        { path: 'view', component: ViewOrdersComponent, outlet: 'orders'}
+        ]},
       { path: 'games', component: MGamesComponent, outlet:'admin', data: {  },
         children: [
           { path: '', outlet:'games', component: AddGamesComponent },
@@ -90,6 +97,7 @@ const appRoutes: Routes = [
     MUsersComponent,
     MMatchesComponent,
     MGamesComponent,
+    MOrdersComponent,
     DashboardComponent,
     AddGamesComponent,
     DeleteGamesComponent,
@@ -112,7 +120,7 @@ const appRoutes: Routes = [
       { enableTracing: false, onSameUrlNavigation: 'reload' } // <-- debugging purposes only
     )
   ],
-  providers: [CookieService],
+  providers: [CookieService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

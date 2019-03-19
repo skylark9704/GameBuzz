@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class PaymentService {
-  url : string = 'http://192.168.0.3:7000/';
+  url : string = 'http://192.168.0.4:7000/';
   constructor(private http : HttpClient,private cookie : CookieService) { }
 
   paymentInitiate(txnDetails){

@@ -12,3 +12,7 @@
 .color{
   color: #FFC10D;
 }
+
+body{
+  overflow: hidden;
+}
