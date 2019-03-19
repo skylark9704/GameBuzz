@@ -1,0 +1,30 @@
+<br>
+<div class="container" style="background-color: #343A40; border-radius: 10px; padding: 16px;">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">TxnID</th>
+      <th scope="col">Status</th>
+      <th scope="col">Match</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Payment Mode</th>
+      <th scope="col">Added On</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of orderData; let i = index">
+      <tr>
+        <th scope="row">{{item.txnid}}</th>
+        <td >{{item.status}}</td>
+        <td routerLink="/match/{{item.productinfo}}">{{item.productinfo}}</td>
+        <td>{{item.amount}}</td>
+        <td>{{item.mode}}</td>
+        <td>{{item.addedon}}</td>
+      </tr>
+    </ng-container>
+
+
+  </tbody>
+</table>
+</div>

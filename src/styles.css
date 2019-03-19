@@ -4,8 +4,7 @@
 }
 
 .is-active{
-  color: black !important;
-  border: 1px solid #FFC10D;
+  border: 2px solid #FFC10D;
   border-radius: 5px;
 }
 

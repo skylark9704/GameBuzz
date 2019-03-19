@@ -35,6 +35,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { DatabaseService } from './database.service';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -75,6 +76,7 @@ const appRoutes: Routes = [
       { path: '', outlet:'playerstats', component: ActivityComponent, pathMatch:'full'},
       { path: 'achievements', component: AchievementsComponent, outlet:"playerstats", data: {  } },
       { path: 'activity', component: ActivityComponent, outlet:'playerstats', data: {  } },
+      { path: 'orders', component: MyOrdersComponent, outlet:'playerstats', data: {  } },
     ]},
 ];
 
@@ -104,7 +106,8 @@ const appRoutes: Routes = [
     AddMatchesComponent,
     DeleteMatchesComponent,
     AdminLoginComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,

@@ -9,10 +9,9 @@
 
     <div class="col-10">
       <div class="container" style="background-color: #343A40; border-radius: 10px; padding: 16px; ">
+        <a style="position: absolute; right:32px;top:16px;background-color: #ffc10d; width:40px;text-align: center; border-radius:5px; box-shadow: 0 0 8px 0 black">Edit</a>
         <h2 class="text-warning">{{username}} <a style="font-size: 16px;">({{name}})</a></h2>
         <hr>
-        <p class="text-warning">Steam : <a>https://steamcommunity.com/profiles/76561198186857074</a></p>
-        <p class="text-warning">Facebook : <a>www.facebook.com/playername</a></p>
       </div>
     </div>
   </div>
@@ -28,13 +27,16 @@
         <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link text-warning bold" [routerLink]="[{ outlets: { playerstats: ['activity']}}]">Recent Activity <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-warning" [routerLink]="[{ outlets: { playerstats: ['activity']}}]" routerLinkActive="bold">Recent Activity </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-warning bold" [routerLink]="[{ outlets: { playerstats: ['achievements']}}]">Achievements</a>
+              <a class="nav-link text-warning" [routerLink]="[{ outlets: { playerstats: ['achievements']}}]" routerLinkActive="bold">Achievements</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-warning bold" >Games</a>
+              <a class="nav-link text-warning">Games</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" [routerLink]="[{ outlets: { playerstats: ['orders']}}]" routerLinkActive="bold">My Orders</a>
             </li>
           </ul>
         </div>
