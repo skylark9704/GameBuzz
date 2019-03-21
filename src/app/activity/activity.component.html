@@ -1,8 +1,19 @@
 <br>
 <div class="container" style="background-color: #343A40; border-radius: 10px; padding: 16px;">
+  <h4>Recent Activity</h4>
+  <hr>
+  <ng-container *ngFor="let item of keys">
   <div class="row">
-    <div class="col">
-      <h4>Activity</h4>
+    <div class="col-6">
+        <div class="media">
+          <img src="/assets/images/profile.jpg" height="64px" width="56px" class="align-self-start mr-3" alt="...">
+          <div class="media-body">
+            <h5 class="mt-0">{{activities[item].body}}</h5>
+            <p ><a routerLink="/match/{{activities[item].matchid}}" style="color: #ffc10d; text-decoration: none">{{player.user.username}} {{activities[item].body | lowercase}}</a></p>
+          </div>
+        </div>
     </div>
   </div>
+  <hr>
+</ng-container>
 </div>

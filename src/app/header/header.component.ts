@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
     cpassword: new FormControl(''),
     email: new FormControl(''),
     username: new FormControl(''),
+    phone: new FormControl('')
   })
 
   token : any;
@@ -82,8 +83,15 @@ export class HeaderComponent implements OnInit {
   }
 
   register(){
-    var credentials = this.registerForm.value;
-    console.log('From Header Component '+credentials.email)
+    var credentials ={
+      name: this.registerForm.value.name,
+      username: this.registerForm.value.username,
+      phone: this.registerForm.value.phone,
+      password: this.registerForm.value.password,
+      cpassword: this.registerForm.value.cpassword,
+      email: this.registerForm.value.email,
+      orders: ' ',}
+    console.log(credentials)
     var response = this.auth.register(credentials); //sends cURL HTTP request
     response.subscribe(res => {
       console.log(res)

@@ -7,7 +7,7 @@ export class DatabaseService {
 
   url;
   constructor() {
-    this.url = 'http://192.168.0.4:6900/'
+    this.url = 'http://192.168.0.6:6900/'
    }
 
   getDbURL(){

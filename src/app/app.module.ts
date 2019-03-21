@@ -36,6 +36,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { DatabaseService } from './database.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { ActivityService } from './activity.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -123,7 +124,7 @@ const appRoutes: Routes = [
       { enableTracing: false, onSameUrlNavigation: 'reload' } // <-- debugging purposes only
     )
   ],
-  providers: [CookieService, DatabaseService],
+  providers: [CookieService, DatabaseService, ActivityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

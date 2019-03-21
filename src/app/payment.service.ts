@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
-  url : string = 'http://192.168.0.4:7000/';
-  constructor(private http : HttpClient,private cookie : CookieService) { }
+  url;
+  constructor(private http : HttpClient,private cookie : CookieService, private db : DatabaseService) {
+  this.url = this.db.getDbURL()
+}
 
   paymentInitiate(txnDetails){
     const headers = new HttpHeaders({

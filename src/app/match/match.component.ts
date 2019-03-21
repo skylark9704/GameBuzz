@@ -41,7 +41,8 @@ export class MatchComponent implements OnInit {
           this.player = res['match'].players.split(',')
           console.log('Player :'+this.player)
 
-          for(var i= 0; i<this.player.length;i++){
+          for(var i= 0; i<this.player.length-1;i++){
+            console.log('Iteration : '+i)
             var result = this.user.getUser(this.player[i]);
             result.subscribe(res => {
               console.log(res)
@@ -49,6 +50,7 @@ export class MatchComponent implements OnInit {
             })
           }
           this.playerLen = this.player.length
+          console.log(this.player)
           console.log('Player Details'+this.playerdetails)
         }
 
@@ -68,13 +70,41 @@ export class MatchComponent implements OnInit {
 }
 
   generateOrderId(){
+    console.log(this.player)
+    if(typeof this.player == 'undefined'){
+      var data = this.getDecodedAccessToken(this.cookie.get('token'))
+      console.log(data)
+      console.log(data.user.email)
+      var name = data.user.name.split(' ')
+
+
+      var paymentData = {
+        productinfo: this.matchId,
+        txnid: uuid.v4()+"|"+data.user._id,
+        amount: this.details['match'].entryfee,
+        email: data.user.email,
+        phone: data.user.phone,
+        lastname: name[1],
+        firstname:name[0],
+        surl: this.db.getDbURL()+"api/transaction", //"http://localhost:3000/payu/success"
+        furl: this.db.getDbURL()+"api/transaction", //"http://localhost:3000/payu/fail"
+      };
+
+      var response = this.payment.paymentInitiate(paymentData)
+      response.subscribe(res => {
+        console.log(res)
+        console.log(res['success'])
+        window.location.href=res['success']
+
+      })
+    }
 
     if (this.player.includes(this.getDecodedAccessToken(this.cookie.get('token')).user._id)){
       console.log('Already Registered')
       this.isJoined = "You are Already Joined!"
     }
 
-    else{
+    else {
       var data = this.getDecodedAccessToken(this.cookie.get('token'))
       console.log(data)
       console.log(data.user.email)
